@@ -174,7 +174,7 @@ def format_message(data):
         except Exception:
             pass
 
-# append message after 600 characters. Backup notifications can be quiet long
+# cut message after 600 characters. Backup notifications can be quiet long
     if message:
         lines.append("")
         lines.append("```text")
