@@ -1,0 +1,20 @@
+Description=Proxmox to Nextcloud Talk bridge
+After=network-online.target
+
+[Service]
+User=proxmox-talk
+Group=proxmox-talk
+
+EnvironmentFile=/etc/proxmox-talk-bridge.env
+
+WorkingDirectory=/opt/proxmox-talk-bridge
+
+ExecStart=/usr/bin/python3 /opt/proxmox-talk-bridge/app.py
+
+Restart=always
+RestartSec=5
+
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
