@@ -78,7 +78,7 @@ curl -i http://127.0.0.1:8789/health
 3. Under "Notification Targets" click on "Add" and select "Webhook"
 ![proxmoxwebhooksetup1](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup1.jpg)
 4. Add a Endpoint name. Whatever you like
-5. Under "Method/URL" select "POST" and add your lxc/vm url in the following format: http://SWAP_WITH_YOUR_IP_ADRESS:8788/proxmox
+5. Under "Method/URL" select "POST" and add your lxc/vm url in the following format: http://SWAP_WITH_YOUR_LXC_IP_ADRESS:8788/proxmox
 6. Under Headers add a Header with the key: "X-Proxmox-Webhook-Secret" and the value, which is the webhook secret you created in the last part.
 7. Copy and paste the following into "Body":
 ```shell
@@ -97,7 +97,14 @@ curl -i http://127.0.0.1:8789/health
 ![proxmoxwebhooksetup3](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup3.jpg)
 
 ### Monitor the bridge with Uptime Kuma
+1. Log into your Uptime Kuma
+2. Add a new monitor
+3. For "Monitortyp" select "HTTP(s)"
+4. For the "URL" http://SWAP_WITH_YOUR_LXC_IP_ADRESS:8788/health
+5. Safe
 
+##
+I hope you like this! This is my first repo, so will to give me advice!
 
 
 
