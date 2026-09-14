@@ -1,2 +1,2 @@
-# proxmox-nextcloudTALK-bridge
-Pyhton Bridge that let´s your proxmox hosts or proxmox backup servers send notifications to your nexcloud Talk rooms via webhooks
+# Proxmox to Nextcloud TALK bridge
+This little python app will enable your Proxmox PVE or PBS to send notifications to your desired Nextcloud talk room. You don´t need a nextcloud bot or another addon or plugin. You can already use webhook targets in stock Proxmox, so will make use of this feature. What I want to say is, all you need is a Proxmox Host, a nextcloud talk and an debian/ubuntu lxc/vm and you my friend are ready to rock!
