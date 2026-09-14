@@ -93,7 +93,7 @@ curl -i http://127.0.0.1:8789/health
 9. Select your Target and click on Test. If everything is working you should have received in your Nextcloud Talk room
 10. Under Notification Matcher you can add your newly created webhook target, so that you get all or whatever notifications you desire to your Nextcloud.
 
-### Monitor the bridge if Uptime Kuma
+### Monitor the bridge with Uptime Kuma
 
 
 
