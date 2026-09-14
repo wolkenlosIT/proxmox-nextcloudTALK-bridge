@@ -95,6 +95,7 @@ curl -i http://127.0.0.1:8789/health
 9. Select your Target and click on Test. If everything is working you should have received in your Nextcloud Talk room
 10. Under Notification Matcher you can add your newly created webhook target, so that you get all or whatever notifications you desire to your Nextcloud.
 ![proxmoxwebhooksetup3](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup3.jpg)
+11. If you have multiple PVEs or PBSs, you just simply have to repeat the Proxmox Setup on each of them. There is no change on the lxs/vm or nextcloud. The nextcloud message will always say which server is sending the message
 
 ### Monitor the bridge with Uptime Kuma
 1. Log into your Uptime Kuma
