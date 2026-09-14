@@ -92,7 +92,7 @@ curl -i http://127.0.0.1:8788/health
 ```
 8. Safe
 ![proxmoxwebhooksetup2](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup2.jpg)
-9. Select your Target and click on Test. If everything is working you should have received in your Nextcloud Talk room
+9. Select your Target and click on Test. If everything is working you should have received a message in your Nextcloud Talk room
 10. Under Notification Matcher you can add your newly created webhook target, so that you get all or whatever notifications you desire to your Nextcloud.
 ![proxmoxwebhooksetup3](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup3.jpg)
 11. If you have multiple PVEs or PBSs, you just simply have to repeat the Proxmox Setup on each of them. There is no change on the lxs/vm or nextcloud. The nextcloud message will always say which server is sending the message
@@ -105,8 +105,8 @@ curl -i http://127.0.0.1:8788/health
 5. Safe
 
 ##
-I hope you like this! This is my first repo, so will to give me advice!
-You can ask my questions in german too!
+I hope you like this! This is my first repo, so feel free to give me advice!
+You can ask me questions in German too!
 
 
 
