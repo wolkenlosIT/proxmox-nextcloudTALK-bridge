@@ -22,3 +22,61 @@ This little python app will enable your Proxmox PVE or PBS to send notifications
 6. Click on your profil pic ---> Click on Settings ---> Click on Security --> Scroll down to *Devices & sessions* and enter an App Name --> Click on *Generate new app password*
 7. The popup will present you the password. Copy it. We will need it in the next step
 8. Optional: If you want to add an avatar to the service account. Now is a good time to do so!
+9. With this the setup on your nextcloud is completed
+
+### Python app setup
+1. Log into your debian or ubuntu lxc/vm with root or a sudo user
+2. Let´s create the app first. Our working dictionary will be:
+```shell
+sudo mkdir /opt/proxmox-talk-bridge
+```
+3. Copy/past the app.py or download it to the directory. You don´t have to change anything here.
+```shell
+sudo nano /opt/proxmox-talk-bridge/app.py
+```
+(Optional: The notification proxmox sends can be quiet long. This is why I let the python script cut the message after 600 characters. If you want more or less, you can change the number in line 181.)
+
+5. Let´s create the webhook secret:
+```shell
+openssl rand -hex 16
+```
+6. Copy the secret and let´s create our environments file. Fill it out, too!
+```shell
+sudo nano /etc/proxmox-talk-bridge.env
+```
+7. Let´s add a user, group and change the permission to our files, so that we can let the app run as a non root user:
+```shell
+sudo groupadd --system proxmox-talk
+sudo useradd --system --gid proxmox-talk --home-dir /opt/proxmox-talk-bridge --shell /usr/sbin/nologin proxmox-talk
+sudo chown -R proxmox-talk:proxmox-talk /opt/proxmox-talk-bridge
+sudo chown root:proxmox-talk /etc/proxmox-talk-bridge.env
+sudo chmod 640 /etc/proxmox-talk-bridge.env
+```
+8. The next step is the creation of a systemd service:
+```shell
+sudo nano /etc/systemd/system/proxmox-talk-bridge.service
+```
+9. Reload the deamon and enable the service for an autostart:
+```shell
+sudo systemctl daemon-reload
+sudo systemctl enable proxmox-talk-bridge.service
+```
+10. You can now start the app via systemd and check the status:
+```shell
+sudo systemctl start proxmox-talk-bridge.service
+sudo systemctl status proxmox-talk-bridge.service
+```
+11. You can check with the following if the webservice is reachable:
+```shell
+curl -i http://127.0.0.1:8789/health
+```
+12. With this. We can move to one of out proxmox servers!
+
+
+
+
+
+
+
+
+
