@@ -76,6 +76,7 @@ curl -i http://127.0.0.1:8789/health
 1. Log into your Proxmox and click on Datacenter.
 2. Scroll down and click on Notifications
 3. Under "Notification Targets" click on "Add" and select "Webhook"
+![proxmoxwebhooksetup1](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup1.jpg)
 4. Add a Endpoint name. Whatever you like
 5. Under "Method/URL" select "POST" and add your lxc/vm url in the following format: http://SWAP_WITH_YOUR_IP_ADRESS:8788/proxmox
 6. Under Headers add a Header with the key: "X-Proxmox-Webhook-Secret" and the value, which is the webhook secret you created in the last part.
@@ -90,8 +91,10 @@ curl -i http://127.0.0.1:8789/health
 }
 ```
 8. Safe
+![proxmoxwebhooksetup2](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup2.jpg)
 9. Select your Target and click on Test. If everything is working you should have received in your Nextcloud Talk room
 10. Under Notification Matcher you can add your newly created webhook target, so that you get all or whatever notifications you desire to your Nextcloud.
+![proxmoxwebhooksetup3](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/proxmoxwebhooksetup3.jpg)
 
 ### Monitor the bridge with Uptime Kuma
 
