@@ -11,3 +11,10 @@ This little python app will enable your Proxmox PVE or PBS to send notifications
 2. We will setup the python app and systemd service on the lxc/VM
 3. We will configure the webhook target on proxmox
 4. Optional: We will monitor the app via Uptime Kuma
+
+### Nextcloud setup
+1. Create a new user.
+2. Logout and login as the new user. Create an app password:
+
+3. a
+4. 
