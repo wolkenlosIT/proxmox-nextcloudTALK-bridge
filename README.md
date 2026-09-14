@@ -68,7 +68,7 @@ sudo systemctl status proxmox-talk-bridge.service
 ```
 11. You can check with the following if the webservice is reachable:
 ```shell
-curl -i http://127.0.0.1:8789/health
+curl -i http://127.0.0.1:8788/health
 ```
 12. With this. We can move to one of our proxmox servers!
 
