@@ -1,5 +1,5 @@
 # Proxmox to Nextcloud TALK bridge
-This little python app will enable your Proxmox PVE or PBS to send notifications to your desired Nextcloud talk room. You don´t need a nextcloud bot or another addon or plugin. You can already use webhook targets in stock Proxmox, so will make use of this feature. What I want to say is, all you need is a Proxmox Host, a nextcloud talk and an debian/ubuntu lxc/vm and you my friend are ready to rock!
+This little python app will enable your Proxmox PVE or PBS to send notifications to your desired Nextcloud talk room. You don´t need a nextcloud bot or another addon or plugin. Also, we will make use of webhook targets in stock Proxmox. What I want to say is, all you need is a Proxmox Host, a nextcloud talk and an debian/ubuntu lxc/vm and you my friend are ready to rock!
 
 ## Requirements
 * Proxmox PVE or PBS
@@ -14,14 +14,14 @@ This little python app will enable your Proxmox PVE or PBS to send notifications
 
 ### Nextcloud setup
 1. Create a new user
-2. If you don´t already have a nextcloud talk channel for your notifications create one
+2. If you don´t already have a nextcloud talk channel for your notifications, create one
 3. Add the new user to the channel
 4. Copy the channel id. To do so enter the channel. You just need to copy the last part of the url. For example if your url is *https://nextcloud.pizzaparty.lan/call/xvq3a88p* you need to copy the *xvq3a88p*
 5. Logout and login as the new user
 ![NextcloudAPPtoken](https://github.com/wolkenlosIT/proxmox-nextcloudTALK-bridge/blob/main/setupimages/nextcloudapptoken.jpg)
-6. Click on your profil pic ---> Click on Settings ---> Click on Security --> Scroll down to *Devices & sessions* and enter an App Name --> Click on *Generate new app password*
+6. Click on your profile pic ---> Click on Settings ---> Click on Security --> Scroll down to *Devices & sessions* and enter an App Name --> Click on *Generate new app password*
 7. The popup will present you the password. Copy it. We will need it in the next step
-8. Optional: If you want to add an avatar to the service account. Now is a good time to do so!
+8. Optional: If you want to add an avatar to the service account: Now is a good time to do so!
 9. With this the setup on your nextcloud is completed
 
 ### Python app setup
@@ -70,7 +70,7 @@ sudo systemctl status proxmox-talk-bridge.service
 ```shell
 curl -i http://127.0.0.1:8789/health
 ```
-12. With this. We can move to one of out proxmox servers!
+12. With this. We can move to one of our proxmox servers!
 
 ### Proxmox setup
 1. Log into your Proxmox and click on Datacenter.
@@ -105,6 +105,7 @@ curl -i http://127.0.0.1:8789/health
 
 ##
 I hope you like this! This is my first repo, so will to give me advice!
+You can ask my questions in german too!
 
 
 
