@@ -7,12 +7,13 @@ import time
 import hmac
 import ssl
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from urllib.parse import urlparse, parse_qs
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
 
 LISTEN_HOST = "0.0.0.0"
-LISTEN_PORT = 8788
+LISTEN_PORT = int(os.environ["LISTEN_PORT"])
 
 NEXTCLOUD_URL = os.environ["NEXTCLOUD_URL"].rstrip("/")
 NEXTCLOUD_USER = os.environ["NEXTCLOUD_USER"]
