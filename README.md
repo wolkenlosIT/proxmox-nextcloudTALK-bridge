@@ -46,7 +46,7 @@ sudo chown -R huawei-influxdb:huawei-influxdb /opt/huawei-influxdb-bridge
 sudo chown root:huawei-influxdb /etc/huawei-influxdb-bridge.env
 sudo chmod 640 /etc/huawei-influxdb-bridge.env
 ```
-6. We will now create a virtual python environment and install the Salamek´s https://github.com/Salamek/huawei-lte-api Huawei into this environment.
+6. We will now create a virtual python environment and install the Salamek´s [Huawei-LTE-API](https://github.com/Salamek/huawei-lte-api) into this environment.
 ```shell
 sudo apt install python3.13-venv
 sudo -u huawei-influxdb python3 -m venv /opt/huawei-influxdb-bridge/venv
