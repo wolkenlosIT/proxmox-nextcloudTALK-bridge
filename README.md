@@ -34,24 +34,26 @@ sudo mkdir /opt/proxmox-talk-bridge
 ```shell
 sudo nano /opt/proxmox-talk-bridge/app.py
 ```
-(Optional: The notification proxmox sends can be quiet long. This is why I let the python script cut the message after 600 characters. If you want more or less, you can change the number in line 181.)
+4. Let´s create our environments file. Fill it out, too!
+```shell
+sudo nano /etc/huawei-influxdb-bridge.env
+```
+5. Let´s add a user, group and change the permission to our files, so that we can let the app run as a non root user:
+```shell
+sudo groupadd --system huawei-influxdb
+sudo useradd --system --gid huawei-influxdb --home-dir /opt/huawei-influxdb-bridge --shell /usr/sbin/nologin huawei-influxdb
+sudo chown -R huawei-influxdb:huawei-influxdb /opt/huawei-influxdb-bridge
+sudo chown root:huawei-influxdb /etc/huawei-influxdb-bridge.env
+sudo chmod 640 /etc/huawei-influxdb-bridge.env
+```
+6. We will now create a virtual python environment and install the Salamek´s https://github.com/Salamek/huawei-lte-api Huawei into this environment.
+```shell
+sudo apt install python3.13-venv
+sudo -u huawei-influxdb python3 -m venv /opt/huawei-influxdb-bridge/venv
+sudo -u huawei-influxdb /opt/huawei-influxdb-bridge/venv/bin/pip install --upgrade pip
+sudo -u huawei-influxdb /opt/huawei-influxdb-bridge/venv/bin/pip install huawei-lte-api
+```
 
-5. Let´s create the webhook secret:
-```shell
-openssl rand -hex 16
-```
-6. Copy the secret and let´s create our environments file. Fill it out, too! Don´t change the port if you don´t know what you are doing!
-```shell
-sudo nano /etc/proxmox-talk-bridge.env
-```
-7. Let´s add a user, group and change the permission to our files, so that we can let the app run as a non root user:
-```shell
-sudo groupadd --system proxmox-talk
-sudo useradd --system --gid proxmox-talk --home-dir /opt/proxmox-talk-bridge --shell /usr/sbin/nologin proxmox-talk
-sudo chown -R proxmox-talk:proxmox-talk /opt/proxmox-talk-bridge
-sudo chown root:proxmox-talk /etc/proxmox-talk-bridge.env
-sudo chmod 640 /etc/proxmox-talk-bridge.env
-```
 8. The next step is the creation of a systemd service:
 ```shell
 sudo nano /etc/systemd/system/proxmox-talk-bridge.service
