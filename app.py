@@ -23,11 +23,11 @@ TALK_TOKEN = os.environ["TALK_TOKEN"]
 WEBHOOK_SECRET = os.environ["WEBHOOK_SECRET"]
 
 
-# TLS certificate verification for the InfluxDB connection
+# TLS certificate verification for the Nextcloud connection
 if NEXTCLOUD_TLS_VERIFY:
     SSL_CONTEXT = ssl.create_default_context()
 else:
-    # Disable TLS verification for InfluxDB certificate
+    # Disable TLS verification for Nextcloud certificate
     SSL_CONTEXT = ssl._create_unverified_context()
 
 
