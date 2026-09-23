@@ -18,13 +18,17 @@ LISTEN_PORT = int(os.environ["LISTEN_PORT"])
 NEXTCLOUD_URL = os.environ["NEXTCLOUD_URL"].rstrip("/")
 NEXTCLOUD_USER = os.environ["NEXTCLOUD_USER"]
 NEXTCLOUD_APP_PASSWORD = os.environ["NEXTCLOUD_APP_PASSWORD"]
+NEXTCLOUD_TLS_VERIFY = os.environ["NEXTCLOUD_TLS_VERIFY"].lower() in ("1", "true", "yes")
 TALK_TOKEN = os.environ["TALK_TOKEN"]
 WEBHOOK_SECRET = os.environ["WEBHOOK_SECRET"]
 
 
-# Temporary workaround:
-# Disable TLS certificate verification for the Nextcloud connection.
-SSL_CONTEXT = ssl._create_unverified_context()
+# TLS certificate verification for the InfluxDB connection
+if NEXTCLOUD_TLS_VERIFY:
+    SSL_CONTEXT = ssl.create_default_context()
+else:
+    # Disable TLS verification for InfluxDB certificate
+    SSL_CONTEXT = ssl._create_unverified_context()
 
 
 def send_to_talk(message):
