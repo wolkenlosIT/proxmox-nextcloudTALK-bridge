@@ -11,8 +11,8 @@ from urllib.parse import urlparse, parse_qs
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-
-LISTEN_HOST = "0.0.0.0"
+# Variables. Don´t change anything here. Place it in proxmox-talk-bridge.env
+LISTEN_HOST = int(os.environ["LISTEN_HOST"])
 LISTEN_PORT = int(os.environ["LISTEN_PORT"])
 
 NEXTCLOUD_URL = os.environ["NEXTCLOUD_URL"].rstrip("/")
