@@ -14,7 +14,11 @@ from urllib.error import HTTPError, URLError
 # Variables. Don´t change anything here. Place it in proxmox-talk-bridge.env
 LISTEN_HOST = os.environ["LISTEN_HOST"]
 LISTEN_PORT = int(os.environ["LISTEN_PORT"])
-PROXMOX_HOSTS = os.environ["PROXMOX_HOSTS"]
+PROXMOX_HOSTS = {
+    ip.strip()
+    for ip in os.environ["PROXMOX_HOSTS"].split(",")
+    if ip.strip()
+}
 
 NEXTCLOUD_URL = os.environ["NEXTCLOUD_URL"].rstrip("/")
 NEXTCLOUD_USER = os.environ["NEXTCLOUD_USER"]
