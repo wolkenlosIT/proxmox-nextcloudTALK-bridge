@@ -14,6 +14,7 @@ from urllib.error import HTTPError, URLError
 # Variables. Don´t change anything here. Place it in proxmox-talk-bridge.env
 LISTEN_HOST = os.environ["LISTEN_HOST"]
 LISTEN_PORT = int(os.environ["LISTEN_PORT"])
+PROXMOX_HOSTS = os.environ["PROXMOX_HOSTS"]
 
 NEXTCLOUD_URL = os.environ["NEXTCLOUD_URL"].rstrip("/")
 NEXTCLOUD_USER = os.environ["NEXTCLOUD_USER"]
@@ -191,6 +192,24 @@ def format_message(data):
 
 class Handler(BaseHTTPRequestHandler):
 
+    def client_ip_allowed(self, allowed_hosts):
+        client_ip = self.client_address[0]
+
+        if client_ip not in allowed_hosts:
+            print(
+                f"Rejected {self.command} {self.path} "
+                f"from {client_ip}",
+                flush=True,
+            )
+
+            self.send_json(
+                403,
+                {"error": "forbidden"}
+            )
+            return False
+
+        return True
+        
     def log_message(self, fmt, *args):
         print(
             f"{self.client_address[0]} - "
@@ -251,6 +270,10 @@ class Handler(BaseHTTPRequestHandler):
                 }
             )
 
+            return 
+
+        # Restrict webhooks to the three Proxmox hosts
+        if not self.client_ip_allowed(PROXMOX_HOSTS):
             return
 
         try:
