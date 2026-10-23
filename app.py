@@ -276,7 +276,7 @@ class Handler(BaseHTTPRequestHandler):
 
             return 
 
-        # Restrict webhooks to the three Proxmox hosts
+        # Restrict webhooks to the specified hosts
         if not self.client_ip_allowed(PROXMOX_HOSTS):
             return
 
